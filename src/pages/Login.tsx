@@ -1,8 +1,8 @@
 import { useState } from "react";
 import logo from "../assets/kvityulya-logo.jpg";
 
-const API_URL =
-  "https://script.google.com/macros/s/AKfycbzo6uDLEGZkXxSt5Svsac6GBo2fT24uzj-GHPgIpBFBmyBCy-6kU4_VHvqy2bAPTRxHKg/exec";
+const API_URL = "/api/login"; // 👈 звертаємося до нашого backend
+
 
 export default function LoginPage() {
   const [login, setLogin] = useState("");
