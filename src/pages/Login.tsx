@@ -26,7 +26,10 @@ export default function LoginPage() {
         body: formData.toString(),
       });
 
-      const result = await response.json();
+      const text = await response.text();
+      console.log("LOGIN RESPONSE:", text);
+      const result = JSON.parse(text);
+
       if (result.success) {
         alert(`Успішний вхід. Роль: ${result.role}`);
         // TODO: зберегти роль або перенаправити
