@@ -3,7 +3,7 @@ import logo from "../assets/kvityulya-logo.jpg";
 
 // src/Login.tsx
 
-const API_URL = "https://script.google.com/macros/s/AKfycbxC_0aSKUbdHntEPzqknPCqS77j3KXFQOken50LJTbRDNpaRlxGYoNsBajM2BAcbdTs_g/exec";
+const API_URL = "https://script.google.com/macros/s/AKfycbzo6uDLEGZkXxSt5Svsac6GBo2fT24uzj-GHPgIpBFBmyBCy-6kU4_VHvqy2bAPTRxHKg/exec";
 
 
 export default function LoginPage() {
