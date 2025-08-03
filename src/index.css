@@ -1,0 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.btn {
+  @apply w-full text-left bg-gray-100 hover:bg-blue-100 text-lg p-2 rounded shadow;
+}
