@@ -1,26 +1,26 @@
-export default async function handler(req, res) {
-  if (req.method !== "POST") {
-    return res.status(405).json({ error: "Method Not Allowed" });
-  }
+import type { NextApiRequest, NextApiResponse } from "next";
 
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse
+) {
   const { login, password } = req.body;
 
   try {
-    const googleScriptUrl =
-      "https://script.google.com/macros/s/AKfycbxm8h5C-ZqhYupMk9fajp47OaiGQQTcr4eEs-87hRE1u7BSnuBUuhMCEj7LZY2DQLXErQ/exec";
+    const response = await fetch(
+      "https://script.google.com/macros/s/AKfycbxkwcc5DGBv8Vz_16z-S89f1J3aDssKjHyAd-Z8AJSjmauHBUDtbQP2Y3DMc4NVH8zKIA/exec",
+      {
+        method: "POST",
+        body: JSON.stringify({ login, password }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
 
-    const response = await fetch(googleScriptUrl, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ login, password }),
-    });
-
-    const data = await response.json();
-    return res.status(200).json(data);
+    const result = await response.json();
+    return res.status(200).json(result);
   } catch (error) {
-    console.error("Proxy error:", error);
-    return res.status(500).json({ error: "Internal Server Error" });
+    return res.status(500).json({ success: false, message: "Server error" });
   }
 }
