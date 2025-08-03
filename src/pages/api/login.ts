@@ -1,5 +1,3 @@
-// Файл: src/pages/api/login.ts (або /api/login.ts якщо без src)
-
 export default async function handler(req, res) {
   if (req.method !== "POST") {
     return res.status(405).json({ error: "Method Not Allowed" });
@@ -9,7 +7,7 @@ export default async function handler(req, res) {
 
   try {
     const googleScriptUrl =
-      "https://script.google.com/macros/s/AKfycbxkwcc5DGBv8Vz_16z-S89f1J3aDssKjHyAd-Z8AJSjmauHBUDtbQP2Y3DMc4NVH8zKIA/exec";
+      "https://script.google.com/macros/s/AKfycbxm8h5C-ZqhYupMk9fajp47OaiGQQTcr4eEs-87hRE1u7BSnuBUuhMCEj7LZY2DQLXErQ/exec";
 
     const response = await fetch(googleScriptUrl, {
       method: "POST",
