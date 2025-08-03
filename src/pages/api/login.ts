@@ -1,26 +1,21 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse
-) {
-  const { login, password } = req.body;
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+  const scriptUrl =
+    "https://script.google.com/macros/s/AKfycbxm8h5C-ZqhYupMk9fajp47OaiGQQTcr4eEs-87hRE1u7BSnuBUuhMCEj7LZY2DQLXErQ/exec";
 
   try {
-    const response = await fetch(
-      "https://script.google.com/macros/s/AKfycbxkwcc5DGBv8Vz_16z-S89f1J3aDssKjHyAd-Z8AJSjmauHBUDtbQP2Y3DMc4NVH8zKIA/exec",
-      {
-        method: "POST",
-        body: JSON.stringify({ login, password }),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    );
+    const response = await fetch(scriptUrl, {
+      method: "POST",
+      body: JSON.stringify(req.body),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
 
-    const result = await response.json();
-    return res.status(200).json(result);
+    const data = await response.json();
+    res.status(200).json(data);
   } catch (error) {
-    return res.status(500).json({ success: false, message: "Server error" });
+    res.status(500).json({ success: false, message: "Помилка мережі або сервера" });
   }
 }
