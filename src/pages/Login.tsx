@@ -1,7 +1,9 @@
 import { useState } from "react";
 import logo from "../assets/kvityulya-logo.jpg";
 
-const API_URL = "/api/login";
+// src/Login.tsx
+
+const API_URL = "https://script.google.com/macros/s/AKfycbxC_0aSKUbdHntEPzqknPCqS77j3KXFQOken50LJTbRDNpaRlxGYoNsBajM2BAcbdTs_g/exec";
 
 
 export default function LoginPage() {
